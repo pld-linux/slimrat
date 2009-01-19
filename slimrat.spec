@@ -6,7 +6,7 @@ Summary:	Utility for downloading files from Rapidshare
 Summary(pl.UTF-8):	Program do pobierania plików z Rapidshare
 Name:		slimrat
 Version:	0.9.2
-Release:	0.1
+Release:	0.2
 License:	MIT License
 Group:		Applications
 Source0:	http://slimrat.googlecode.com/files/%{name}-%{version}.tar.bz2
@@ -43,14 +43,14 @@ GUI.
 rm -rf $RPM_BUILD_ROOT
 
 install -d $RPM_BUILD_ROOT%{_bindir}
-install -d $RPM_BUILD_ROOT%{_datadir}/%{name}/plugins
+install -d $RPM_BUILD_ROOT%{perl_vendorlib}/plugins
 install slimrat $RPM_BUILD_ROOT%{_bindir}
 %if %{with gui}
 install slimrat-gui $RPM_BUILD_ROOT%{_bindir}
 %endif
-install Plugin.pm $RPM_BUILD_ROOT%{_datadir}/%{name}
-install slimrat.glade $RPM_BUILD_ROOT%{_datadir}/%{name}
-install plugins/*.pm $RPM_BUILD_ROOT%{_datadir}/%{name}/plugins
+install Plugin.pm $RPM_BUILD_ROOT%{perl_vendorlib}
+install slimrat.glade $RPM_BUILD_ROOT%{perl_vendorlib}
+install plugins/*.pm $RPM_BUILD_ROOT%{perl_vendorlib}/plugins
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -58,8 +58,7 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/*
-%dir %{_datadir}/%{name}
-%dir %{_datadir}/%{name}/plugins
-%{_datadir}/%{name}/Plugin.pm
-%{_datadir}/%{name}/slimrat.glade
-%{_datadir}/%{name}/plugins/*.pm
+%dir %{perl_vendorlib}/plugins
+%{perl_vendorlib}/Plugin.pm
+%{perl_vendorlib}/slimrat.glade
+%{perl_vendorlib}/plugins/*.pm
