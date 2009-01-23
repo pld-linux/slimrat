@@ -2,6 +2,7 @@
 # Conditional build:
 %bcond_without  gui	# build without GUI
 #
+%include	/usr/lib/rpm/macros.perl
 Summary:	Utility for downloading files from Rapidshare
 Summary(pl.UTF-8):	Program do pobierania plików z Rapidshare
 Name:		slimrat
@@ -12,7 +13,7 @@ Group:		Applications
 Source0:	http://slimrat.googlecode.com/files/%{name}-%{version}.tar.bz2
 # Source0-md5:	17c5adf94b9464edaa881aa2e6c98448
 URL:		http://code.google.com/p/slimrat/
-Requires:	perl
+Requires:	perl-base
 Requires:	perl(Getopt::Long)
 %if %{with gui}
 Requires:	gtk+2
