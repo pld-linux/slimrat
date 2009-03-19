@@ -6,17 +6,16 @@
 Summary:	Utility for downloading files from Rapidshare
 Summary(pl.UTF-8):	Program do pobierania plików z Rapidshare
 Name:		slimrat
-Version:	0.9.2
-Release:	0.5
+Version:	0.9.3
+Release:	0.1
 License:	MIT License
 Group:		Applications
 Source0:	http://slimrat.googlecode.com/files/%{name}-%{version}.tar.bz2
-# Source0-md5:	17c5adf94b9464edaa881aa2e6c98448
-Patch0:		%{name}-youtube_plugin.patch
-Patch1:		%{name}-wget.patch
+# Source0-md5:	962763316dff6d4aa81851a5f23ea682
 URL:		http://code.google.com/p/slimrat/
 Requires:	perl-base
 Requires:	perl(Getopt::Long)
+Requires:	perl(HTTP::Response::Encoding)
 %if %{with gui}
 Requires:	gtk+2
 Requires:	perl(Gtk2::GladeXML)
@@ -39,8 +38,6 @@ GUI.
 
 %prep
 %setup -q
-%patch0 -p1
-%patch1 -p1
 
 %build
 
