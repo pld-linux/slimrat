@@ -7,7 +7,7 @@ Summary:	Utility for downloading files from Rapidshare
 Summary(pl.UTF-8):	Program do pobierania plików z Rapidshare
 Name:		slimrat
 Version:	0.9.4
-Release:	0.1
+Release:	0.2
 License:	MIT License
 Group:		Applications
 Source0:	http://slimrat.googlecode.com/files/%{name}-%{version}.tar.bz2
@@ -54,6 +54,7 @@ install slimrat $RPM_BUILD_ROOT%{_bindir}
 install slimrat-gui $RPM_BUILD_ROOT%{_bindir}
 %endif
 install Plugin.pm $RPM_BUILD_ROOT%{perl_vendorlib}
+install Toolbox.pm $RPM_BUILD_ROOT%{perl_vendorlib}
 install slimrat.glade $RPM_BUILD_ROOT%{perl_vendorlib}
 install plugins/*.pm $RPM_BUILD_ROOT%{perl_vendorlib}/plugins
 
@@ -65,5 +66,6 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/*
 %dir %{perl_vendorlib}/plugins
 %{perl_vendorlib}/Plugin.pm
+%{perl_vendorlib}/Toolbox.pm
 %{perl_vendorlib}/slimrat.glade
 %{perl_vendorlib}/plugins/*.pm
