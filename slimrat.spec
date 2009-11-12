@@ -30,6 +30,7 @@ Requires:	perl(Term::ANSIColor)
 Requires:	perl(WWW::Mechanize)
 Requires:	tesseract
 Requires:	wget
+Obsoletes:	perl-Clipboard
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
