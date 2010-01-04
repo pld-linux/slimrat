@@ -1,0 +1,74 @@
+diff -burNp slimrat-1.0/src/Common.pm slimrat-1.0-dud/src/Common.pm
+--- slimrat-1.0/src/Common.pm	2009-10-26 19:07:22.000000000 +0100
++++ slimrat-1.0-dud/src/Common.pm	2010-01-04 23:57:11.268290408 +0100
+@@ -60,8 +60,8 @@ use IO::Uncompress::AnyUncompress qw(any
+ use File::Temp qw/tempfile/;
+ 
+ # Find root for custom packages
+-use FindBin qw($RealBin);
+-use lib $RealBin;
++use FindBin;
++use lib "$FindBin::Bin/../../usr/share/slimrat";
+ 
+ # Custom packages
+ use Semaphore;
+diff -burNp slimrat-1.0/src/Plugin.pm slimrat-1.0-dud/src/Plugin.pm
+--- slimrat-1.0/src/Plugin.pm	2009-10-26 19:08:14.000000000 +0100
++++ slimrat-1.0-dud/src/Plugin.pm	2010-01-04 23:58:18.308230758 +0100
+@@ -46,8 +46,8 @@ use LWP::Simple;
+ use File::Basename;
+ 
+ # Find root for custom packages
+-use FindBin qw($RealBin);
+-use lib $RealBin;
++use FindBin;
++use lib "$FindBin::Bin/../../usr/share/slimrat";
+ 
+ # Custom packages
+ use Log;
+@@ -173,7 +173,7 @@ sub configure {
+ 	$config->path_abs("update_cache");
+ 	
+ 	# Load plugins
+-	load("$RealBin/plugins");
++	load("/usr/share/slimrat/plugins");
+ 	if (-d $config->get("update_cache")) {
+ 		load($config->get("update_cache"))
+ 	} else {
+diff -burNp slimrat-1.0/src/slimrat slimrat-1.0-dud/src/slimrat
+--- slimrat-1.0/src/slimrat	2009-10-26 18:48:26.000000000 +0100
++++ slimrat-1.0-dud/src/slimrat	2010-01-04 23:54:56.955090428 +0100
+@@ -50,8 +50,8 @@ use Getopt::Long;
+ use Pod::Usage;
+ 
+ # Find root for custom packages
+-use FindBin qw($RealBin);
+-use lib $RealBin;
++use FindBin;
++use lib "$FindBin::Bin/../../usr/share/slimrat";
+ 
+ # Custom packages
+ use Common;
+diff -burNp slimrat-1.0/src/slimrat-gui slimrat-1.0-dud/src/slimrat-gui
+--- slimrat-1.0/src/slimrat-gui	2009-10-26 18:48:37.000000000 +0100
++++ slimrat-1.0-dud/src/slimrat-gui	2010-01-04 23:56:13.551572614 +0100
+@@ -56,8 +56,8 @@ use Gtk2::SimpleList;
+ use File::Basename;
+ 
+ # Find root for custom packages
+-use FindBin qw($RealBin);
+-use lib $RealBin;
++use FindBin;
++use lib "$FindBin::Bin/../../usr/share/slimrat";
+ 
+ # Custom packages
+ use Common;
+@@ -113,7 +113,7 @@ my $config = config_init($options{"confi
+ 
+ # Initialise own configuration
+ my $config_gui = new Configuration;
+-$config_gui->set_default("glade_file",  $RealBin.'/slimrat.glade');
++$config_gui->set_default("glade_file",  '/usr/share/slimrat/slimrat.glade');
+ $config_gui->set_default("queue_file",  $ENV{HOME}.'/.slimrat/queue');
+ $config_gui->merge($config->section("gui"));
+ 
