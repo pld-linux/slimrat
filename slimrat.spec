@@ -2,7 +2,6 @@
 # Conditional build:
 %bcond_without  gui	# build without GUI
 #
-%include	/usr/lib/rpm/macros.perl
 Summary:	Utility for downloading files from Rapidshare
 Summary(pl.UTF-8):	Program do pobierania plików z Rapidshare
 Name:		slimrat
